@@ -82,6 +82,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View(model);
         }
 
+
         [HttpPost]
         public ActionResult Delete(int id)
         {
