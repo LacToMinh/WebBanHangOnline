@@ -14,17 +14,17 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/News
-        public ActionResult Index(string Searchtext, int? page)
+        public ActionResult Index(string SearchText, int? page)
         {
-            var pageSize = 10;
+            var pageSize = 5;
             if (page == null)
             {
                 page = 1;
             }
             IEnumerable<News> items = db.News.OrderByDescending(x => x.Id);
-            if (!string.IsNullOrEmpty(Searchtext))
+            if (!string.IsNullOrEmpty(SearchText))
             {
-                items= items.Where(x=>x.Alias.Contains(Searchtext) || x.Title.Contains(Searchtext));
+                items= items.Where(x=>x.Alias.Contains(SearchText) || x.Title.Contains(SearchText));
             }
             var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
              items = items.ToPagedList(pageIndex, pageSize);

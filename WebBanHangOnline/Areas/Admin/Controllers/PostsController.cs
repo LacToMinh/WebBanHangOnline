@@ -8,7 +8,7 @@ using WebBanHangOnline.Models.EF;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin,Employee")]
+    //[Authorize(Roles = "Admin,Employee")]
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,6 +20,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         }
         public ActionResult Add()
         {
+            ViewBag.CategoryList = db.Categories.ToList();
             return View();
         }
 
@@ -30,13 +31,14 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 model.CreatedDate = DateTime.Now;
-                model.CategoryId = 3;
+                //model.CategoryId = 3;
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = WebBanHangOnline.Models.Common.Filter.FilterChar(model.Title);
                 db.Posts.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoryList = db.Categories.ToList();
             return View(model);
         }
 

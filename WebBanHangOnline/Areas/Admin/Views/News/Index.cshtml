@@ -29,7 +29,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/home">Trang chủ</a></li>
                     <li class="breadcrumb-item active">@ViewBag.Title</li>
                 </ol>
             </div>
@@ -50,6 +50,21 @@
       </div>
     </div>
     <div class="card-body">
+      <div class="row">
+        <div class="col-4">
+          @using (Html.BeginForm("index", "News", FormMethod.Get, new {}))
+          {
+            <div class="input-group input-group-sm">
+              @Html.TextBox("SearchText", null, new { @class = "form-control" })
+              @*<input type="text" name="SearchText" class="form-control" />*@
+              <span class="input-group-append">
+                <button type="submit" class="btn btn-primary btn-flat ">Tìm kiếm</button>
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+
       <table class="table table-hover">
         <thead>
           <tr>
@@ -65,7 +80,7 @@
         <tbody>
           @if (Model != null && Model.Any())
           {
-            var i = 1;
+            var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1; ;
             foreach (var item in Model)
             {
               var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
@@ -99,6 +114,13 @@
         </tbody>
       </table>
 
+      <div class="row">
+        <div class="col-5"></div>
+        <div class="col-7">
+          @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+      </div>      
+     
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
