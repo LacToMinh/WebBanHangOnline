@@ -1,4 +1,4 @@
-﻿@model WebBanHangOnline.Models.EF.News
+﻿@model WebBanHangOnline.Models.EF.Category
 
 @using PagedList.Mvc;
 @using PagedList;
@@ -58,63 +58,43 @@
     <div class="card-body">
 
       <div class="bs-stepper-content">
-        @using (Html.BeginForm("Add", "News", FormMethod.Post, new { }))
+        @using (Html.BeginForm("Add", "Category", FormMethod.Post, new { }))
         {
           @Html.AntiForgeryToken()
           @Html.ValidationSummary(true)
 
           <!-- your steps content here -->
-          <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
-
-            <div class="form-group">
-              <label for="exampleInputEmail1">Tiêu đề</label>
-              @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu đề" })
-              @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-              <label for="exampleInputFile">Ảnh đại diện</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  @*<input type="file" name="Image" class="custom-file-input" id="exampleInputFile">
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>*@
-                  @Html.TextBoxFor(x => x.Image, new { @id = "txtImage", @class = "form-control" })
-                </div>
-                <div class="input-group-append">
-                  <input type="button" value="Tải ảnh" onclick="BrowseServer('txtImage');" />
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Mô tả</label>
-              @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Chi tiết</label>
-              @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id="txtDetail" })
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Seo title</label>
-              @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Seo Description</label>
-              @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Seo Keywords</label>
-              @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-              <a href="/admin/category" class="btn btn-danger">Quay lại</a>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+        <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Tên danh mục</label>
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tên danh mục" })
+            @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
           </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mô tả</label>
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Thứ tự</label>
+            @Html.TextBoxFor(x => x.Position, new { @class = "form-control", @Value = "1", @placeholder = "Thứ tự danh mục" })
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Tiêu đề Seo</label>
+            @Html.TextAreaFor(x => x.SeoTitle, new { @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mô tả Seo</label>
+            @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Từ khóa Seo</label>
+            @Html.TextAreaFor(x => x.SeoKeywords, new { @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <a href="/admin/category" class="btn btn-danger">Quay lại</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
         }
       </div>
 

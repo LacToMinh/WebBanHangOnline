@@ -82,7 +82,6 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public ActionResult Delete(int id)
         {
@@ -106,7 +105,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 item.IsActive = !item.IsActive;
                 db.Entry(item).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true, isAcive = item.IsActive });
+                return Json(new { success = true, isActive = item.IsActive });
             }
 
             return Json(new { success = false });
