@@ -82,7 +82,6 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View(model);
         }
 
-
         public ActionResult Edit(int id)
         {
             ViewBag.ProductCategory = new SelectList(db.ProductCategories.ToList(), "Id", "Title");
