@@ -213,7 +213,7 @@ jQuery(document).ready(function($)
     	}
     }
 
-    /* 
+  /* 
 
 	5. Init Fix Product Border
 
@@ -322,8 +322,8 @@ jQuery(document).ready(function($)
 	            getSortData: {
 	            	price: function(itemElement)
 	            	{
-						var priceEle = $(itemElement).find('.in_product_price').text();
-						return parseFloat(priceEle);
+									var priceEle = $(itemElement).find('.in_product_price').text();
+									return parseFloat(priceEle);
 	            	},
 	            	name: '.product_name'
 	            },
@@ -365,11 +365,11 @@ jQuery(document).ready(function($)
 		            filter: function()
 		            {
 		            	var priceRange = $('#amount').val();
-			        	var priceMin = parseFloat(priceRange.split('-')[0].replace('đ', ''));
-			        	var priceMax = parseFloat(priceRange.split('-')[1].replace('đ', ''));
-						var itemPrice = $(this).find('.in_product_price').clone().children().remove().end().text();
+			        		var priceMin = parseFloat(priceRange.split('-')[0].replace('đ', ''));
+			        		var priceMax = parseFloat(priceRange.split('-')[1].replace('đ', ''));
+									var itemPrice = $(this).find('.in_product_price').clone().children().remove().end().text();
 
-			        	return (itemPrice > priceMin) && (itemPrice < priceMax);
+			        		return (itemPrice > priceMin) && (itemPrice < priceMax);
 		            },
 		            animationOptions: {
 		                duration: 750,
@@ -389,21 +389,21 @@ jQuery(document).ready(function($)
 
     function initPriceSlider()
     {
-		$( "#slider-range" ).slider(
-		{
-			range: true,
-			min: 0,
-			max: 1000000,
-			values: [ 0, 500000 ],
-			slide: function( event, ui )
-			{
-				$("#amount").val("đ" + ui.values[0] + " - đ" + ui.values[1]);
-				$('#FromAmount').val(ui.values[0]);
-				$('#ToAmount').val(ui.values[1]);
-			}
-		});
+			$( "#slider-range" ).slider(
+				{
+					range: true,
+					min: 0,
+					max: 1000000,
+					values: [ 0, 500000 ],
+					slide: function( event, ui )
+					{
+						$("#amount").val("đ" + ui.values[0] + " - đ" + ui.values[1]);
+						$('#FromAmount').val(ui.values[0]);
+						$('#ToAmount').val(ui.values[1]);
+					}
+				});
 			
-		$( "#amount" ).val( "đ" + $( "#slider-range" ).slider( "values", 0 ) + " - đ" + $( "#slider-range" ).slider( "values", 1 ) );
+			$( "#amount" ).val( "đ" + $( "#slider-range" ).slider( "values", 0 ) + " - đ" + $( "#slider-range" ).slider( "values", 1 ) );
     }
 
     /* 
