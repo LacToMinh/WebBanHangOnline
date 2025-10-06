@@ -37,10 +37,10 @@
             {
                 <div class="row">
                     <div id="show_success"></div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                        @Html.Action("Partial_CheckOut", "Shoppingcart")
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         @Html.Action("Partial_Item_ThanhToan", "ShoppingCart")
                     </div>
                 </div>
@@ -88,9 +88,9 @@
                     }
                 },
                 messages: {
-                    'CustomerName': 'Bạn khổng để trống trường này',
-                    'Phone': 'Bạn khổng để trống trường này',
-                    'Address': 'Bạn khổng để trống trường này',
+                    'CustomerName': 'Bạn không để trống trường này',
+                    'Phone': 'Bạn không để trống trường này',
+                    'Address': 'Bạn không để trống trường này',
                     'Email': 'Email chưa hợp lệ'
                 }
             });

@@ -13,7 +13,21 @@
         function OnBeginCO() {
             $('#btnCheckOut').attr("disabled", "disabled");
             $('#load_send').html('<h2>Đang gửi....</h2>');
-        }
+            $('#load_send').html(`
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="https://i.gifer.com/ZZ5H.gif" width="30" height="30" />
+                    <span>Đang xử lý đơn hàng, vui lòng chờ...</span>
+                </div>
+            `);
+        //  $('#load_send').html(`
+        //      <div style="display: flex; align-items: center; gap: 10px;">
+        //          <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+        //              <span class="sr-only">Loading...</span>
+        //          </div>
+        //          <span>Đang xử lý đơn hàng, vui lòng chờ...</span>
+        //      </div>
+        //  `);
+        //}
         function OnSuccessCO(res) {
             if (res.Success) {
                 if (res.Code == 1) {
