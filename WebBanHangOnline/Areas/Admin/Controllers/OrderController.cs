@@ -11,7 +11,7 @@ using WebBanHangOnline.Models.ViewModels;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class OrderController : Controller
     {
 
@@ -66,7 +66,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             var query = from o in db.Orders
                         join od in db.OrderDetails on o.Id equals od.OrderId
                         join p in db.Products
-on od.ProductId equals p.Id
+                                on od.ProductId equals p.Id
                         select new
                         {
                             CreatedDate = o.CreatedDate,

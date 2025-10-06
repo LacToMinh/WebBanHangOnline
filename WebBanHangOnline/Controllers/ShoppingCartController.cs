@@ -163,7 +163,7 @@ namespace WebBanHangOnline.Controllers
                     //order.E = req.CustomerName;
                     db.Orders.Add(order);
                     db.SaveChanges();
-                    //send mail cho khachs hang
+                    //send mail cho khach hang
                     var strSanPham = "";
                     var thanhtien = decimal.Zero;
                     var TongTien = decimal.Zero;
@@ -187,7 +187,7 @@ namespace WebBanHangOnline.Controllers
                     contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentCustomer = contentCustomer.Replace("{{ThanhTien}}", WebBanHangOnline.Common.Common.FormatNumber(thanhtien, 0));
                     contentCustomer = contentCustomer.Replace("{{TongTien}}", WebBanHangOnline.Common.Common.FormatNumber(TongTien, 0));
-                    WebBanHangOnline.Common.Common.SendMail("ShopOnline", "Đơn hàng #" + order.Code, contentCustomer.ToString(), req.Email);
+                    WebBanHangOnline.Common.Common.SendMail("LAMINSHOP", "Đơn hàng #" + order.Code, contentCustomer.ToString(), req.Email);
 
                     string contentAdmin = System.IO.File.ReadAllText(Server.MapPath("~/Content/templates/send1.html"));
                     contentAdmin = contentAdmin.Replace("{{MaDon}}", order.Code);
@@ -199,7 +199,7 @@ namespace WebBanHangOnline.Controllers
                     contentAdmin = contentAdmin.Replace("{{DiaChiNhanHang}}", order.Address);
                     contentAdmin = contentAdmin.Replace("{{ThanhTien}}", WebBanHangOnline.Common.Common.FormatNumber(thanhtien, 0));
                     contentAdmin = contentAdmin.Replace("{{TongTien}}", WebBanHangOnline.Common.Common.FormatNumber(TongTien, 0));
-                    WebBanHangOnline.Common.Common.SendMail("ShopOnline", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
+                    WebBanHangOnline.Common.Common.SendMail("LAMINSHOP", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
                     cart.ClearCart();
                     code = new { Success = true, Code = req.TypePayment, Url = "" };
                     //var url = "";
