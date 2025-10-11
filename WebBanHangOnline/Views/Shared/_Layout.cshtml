@@ -99,12 +99,12 @@
                                         else
                                         {
                                             <a href="#">
-                                               Welcome: @User.Identity.Name
+                                               Xin chào: @User.Identity.Name
                                                 <i class="fa fa-angle-down"></i>
                                             </a>
                                             <ul class="account_selection">
                                                 <li><a href="/"><i class="fa fa-sign-in" aria-hidden="true"></i>Profile</a></li>
-                                                <li><a href="javascript:document.getElementById('logOffForm').submit()"><i class="fa fa-user-plus" aria-hidden="true"></i> Lohout</a></li>
+                                                <li><a href="javascript:document.getElementById('logOffForm').submit()"><i class="fa fa-user-plus" aria-hidden="true"></i> Logout</a></li>
                                             </ul>
                                         }
 
@@ -132,7 +132,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                <a href="/">lamin<span>shop</span></a>
+                                <a href="/">@SettingHelper.GetValue("SettingTitle")<span>shop</span></a>
                             </div>
                             <nav class="navbar">
                                 @Html.Action("MenuTop", "Menu")

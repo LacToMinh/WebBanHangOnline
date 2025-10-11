@@ -42,7 +42,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             var checkLogo = db.SystemSettings.FirstOrDefault(x => x.SettingKey.Contains("SettingLogo"));
             if (checkLogo == null)
             {
-                 set = new SystemSetting();
+                set = new SystemSetting();
                 set.SettingKey = "SettingLogo";
                 set.SettingValue = req.SettingLogo;
                 db.SystemSettings.Add(set);
