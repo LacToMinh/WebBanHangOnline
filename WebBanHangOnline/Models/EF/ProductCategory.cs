@@ -15,7 +15,7 @@ namespace WebBanHangOnline.Models.EF
             this.Products = new HashSet<Product>();
         }
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [StringLength(150)]

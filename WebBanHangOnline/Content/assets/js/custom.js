@@ -224,8 +224,8 @@ jQuery(document).ready(function($)
 			    s.text(seconds); 
 			 
 			}, 1000);
-    	}	
-    }
+    }	
+  }
 
     /* 
 

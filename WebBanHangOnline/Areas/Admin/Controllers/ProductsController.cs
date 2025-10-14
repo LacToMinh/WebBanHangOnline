@@ -108,24 +108,25 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            var item = db.Products.Find(id);
-            if (item != null)
+          var item = db.Products.Find(id);
+          if (item != null)
+          {
+            // ✅ Dùng ToList() để copy danh sách ra ngoài, tách khỏi EF tracking
+            var checkImg = db.ProductImages.Where(x => x.ProductId == item.Id).ToList();
+            if (checkImg.Any())
             {
-                var checkImg = item.ProductImage.Where(x => x.ProductId == item.Id);
-                if (checkImg != null)
-                {
-                    foreach(var img in checkImg)
-                    {
-                        db.ProductImages.Remove(img);
-                        db.SaveChanges();
-                    }
-                }
-                db.Products.Remove(item);
-                db.SaveChanges();
-                return Json(new { success = true });
+              foreach (var img in checkImg)
+              {
+                db.ProductImages.Remove(img);
+              }
             }
 
-            return Json(new { success = false });
+            db.Products.Remove(item);
+            db.SaveChanges(); // ✅ Chỉ gọi SaveChanges 1 lần
+            return Json(new { success = true });
+          }
+
+          return Json(new { success = false });
         }
 
         [HttpPost]

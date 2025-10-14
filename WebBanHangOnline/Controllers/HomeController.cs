@@ -13,8 +13,6 @@ namespace WebBanHangOnline.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-         
-            //WebBanHangOnline.Common.Common.SendMail("ABC", "AAAA", "AAAA", "ngohoang29@gmail.com");
             return View();
         }
 
@@ -22,6 +20,7 @@ namespace WebBanHangOnline.Controllers
         {
             return PartialView();
         }
+
         [HttpPost]
         public ActionResult Subscribe(Subscribe req)
         {

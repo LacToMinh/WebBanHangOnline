@@ -11,7 +11,6 @@ namespace WebBanHangOnline.Common
     public class Common
     {
 
-
         private static string password = ConfigurationManager.AppSettings["PasswordEmail"];
         private static string Email = ConfigurationManager.AppSettings["Email"];
         public static bool SendMail(string name, string subject, string content,

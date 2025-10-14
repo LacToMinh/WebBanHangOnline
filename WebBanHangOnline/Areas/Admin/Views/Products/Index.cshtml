@@ -203,7 +203,7 @@
                     var conf = confirm('Bạn có muốn xóa các bản ghi này hay không?');
                     if (conf === true) {
                         $.ajax({
-                            url: '/admin/news/deleteAll',
+                            url: '/admin/productcategory/deleteAll',
                             type: 'POST',
                             data: { ids: str },
                             success: function (rs) {
